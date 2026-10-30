@@ -7,8 +7,18 @@ title="$1"
 
 if [[ -z "$title" ]]; then
   jq -n '{items: [{title: "새 노트 제목을 입력하세요", valid: false}]}'
-elif "$bear" show --title "$title" >/dev/null 2>&1; then
-  jq -n --arg t "$title" '{items: [{title: $t, subtitle: "기존 노트 열기", arg: $t}]}'
-else
-  jq -n --arg t "$title" '{items: [{title: $t, subtitle: "새 노트 만들기", arg: $t}]}'
+  exit
 fi
+
+if "$bear" show --title "$title" >/dev/null 2>&1; then
+  action="기존 노트 열기"
+else
+  action="새 노트 만들기"
+fi
+
+jq -n --arg t "$title" --arg a "$action" '{items: [{
+  title: $t,
+  subtitle: $a,
+  arg: $t,
+  mods: {cmd: {arg: $t, subtitle: ($a + " (새 창)"), variables: {new_window: "1"}}}
+}]}'

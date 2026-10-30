@@ -4,14 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>local.hun.alfred-bear</string>
-	<key>name</key>
-	<string>Bear (bearcli)</string>
-	<key>description</key>
-	<string>bs: 노트 검색, bn: 노트 만들기</string>
-	<key>createdby</key>
-	<string>hun</string>
-	<key>readme</key>
-	<string>소스: ~/alfred-bear</string>
 	<key>connections</key>
 	<dict>
 		<key>A1000000-0000-0000-0000-000000000001</key>
@@ -23,6 +15,16 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A1000000-0000-0000-0000-000000000002</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>새 창으로 열기</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -39,8 +41,24 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B1000000-0000-0000-0000-000000000002</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>새 창으로 열기</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 	</dict>
+	<key>createdby</key>
+	<string>hun</string>
+	<key>description</key>
+	<string>bs: 노트 검색, bn: 노트 만들기</string>
+	<key>name</key>
+	<string>Bear (bearcli)</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -176,16 +194,38 @@
 			<integer>2</integer>
 		</dict>
 	</array>
+	<key>readme</key>
+	<string>소스: ~/alfred-bear</string>
 	<key>uidata</key>
 	<dict>
 		<key>A1000000-0000-0000-0000-000000000001</key>
-		<dict><key>xpos</key><real>30</real><key>ypos</key><real>30</real></dict>
+		<dict>
+			<key>xpos</key>
+			<real>30.0</real>
+			<key>ypos</key>
+			<real>30.0</real>
+		</dict>
 		<key>A1000000-0000-0000-0000-000000000002</key>
-		<dict><key>xpos</key><real>250</real><key>ypos</key><real>30</real></dict>
+		<dict>
+			<key>xpos</key>
+			<real>250.0</real>
+			<key>ypos</key>
+			<real>30.0</real>
+		</dict>
 		<key>B1000000-0000-0000-0000-000000000001</key>
-		<dict><key>xpos</key><real>30</real><key>ypos</key><real>180</real></dict>
+		<dict>
+			<key>xpos</key>
+			<real>30.0</real>
+			<key>ypos</key>
+			<real>180.0</real>
+		</dict>
 		<key>B1000000-0000-0000-0000-000000000002</key>
-		<dict><key>xpos</key><real>250</real><key>ypos</key><real>180</real></dict>
+		<dict>
+			<key>xpos</key>
+			<real>250.0</real>
+			<key>ypos</key>
+			<real>180.0</real>
+		</dict>
 	</dict>
 	<key>version</key>
 	<string>0.1.0</string>

@@ -23,6 +23,7 @@ print -r -- "$result" | jq '
       title: .title,
       subtitle: ((if (.pins | length) > 0 then "📌 " else "" end)
                  + (.modified | fromdateiso8601 | strflocaltime("%m/%d %H:%M")) + " 수정"),
-      arg: .id
+      arg: .id,
+      mods: {cmd: {arg: .id, subtitle: "새 창으로 열기", variables: {new_window: "1"}}}
     })}
   end'
