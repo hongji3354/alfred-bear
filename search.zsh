@@ -3,7 +3,8 @@
 # 결과 항목의 arg는 노트 ID이고, open.zsh가 받아서 연다.
 
 bear=/Applications/Bear.app/Contents/MacOS/bearcli
-query="$1"
+# 자모로 쪼개진 한글(NFD)이 들어와도 Bear가 찾을 수 있게 NFC로 바꾼다.
+query=$(print -rn -- "$1" | iconv -f UTF-8-MAC -t UTF-8)
 fields=id,title,modified,pins
 limit=50
 

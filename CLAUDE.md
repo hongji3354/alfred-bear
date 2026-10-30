@@ -9,7 +9,9 @@ Bear 노트를 검색(`bs`)하고 만드는(`bn`) 개인용 Alfred 워크플로.
 - `bs`는 입력을 Bear 검색 문법 그대로 넘긴다. `#태그`도 별도 처리 없이 노트 검색이 된다.
 - 태그 목록을 보여 주는 태그 검색은 일부러 만들지 않았다. 사용자가 아직 태그를 쓰지 않는다. 태그가 많아지면 그때 추가한다.
 - `bn`은 같은 제목의 노트가 있으면 새로 만들지 않고 기존 노트를 연다.
+- ⌘+Enter로 고르면 새 창으로 연다. Script Filter 항목의 `mods.cmd`가 `new_window=1` 변수를 넘기고, `open.zsh`와 `create.zsh`가 이 값을 보고 `--new-window`를 붙인다. `info.plist`에는 ⌘(1048576) 연결이 따로 있다.
 - 사용자는 한글로 노트를 쓴다. 문구와 주석은 한글로 쓴다.
+- 입력은 `iconv -f UTF-8-MAC -t UTF-8`로 NFC로 바꾼 뒤 쓴다. 자모로 쪼개진 한글(NFD)은 Bear 검색과 제목 비교에서 일치하지 않는다.
 
 ## 구조
 - `info.plist`: Alfred 정의. Script Filter와 Run Script 모두 External Script(type 8)로 같은 폴더의 `.zsh` 파일을 실행한다.

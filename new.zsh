@@ -3,7 +3,8 @@
 # 결과 항목의 arg는 제목이고, create.zsh가 받아서 처리한다.
 
 bear=/Applications/Bear.app/Contents/MacOS/bearcli
-title="$1"
+# 자모로 쪼개진 한글(NFD)이 들어와도 기존 제목과 맞춰 볼 수 있게 NFC로 바꾼다.
+title=$(print -rn -- "$1" | iconv -f UTF-8-MAC -t UTF-8)
 
 if [[ -z "$title" ]]; then
   jq -n '{items: [{title: "새 노트 제목을 입력하세요", valid: false}]}'
