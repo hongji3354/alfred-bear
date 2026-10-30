@@ -1,0 +1,14 @@
+#!/bin/zsh --no-rcs
+# bn: 입력한 제목의 노트가 이미 있으면 열기, 없으면 새로 만들기를 미리 보여준다.
+# 결과 항목의 arg는 제목이고, create.zsh가 받아서 처리한다.
+
+bear=/Applications/Bear.app/Contents/MacOS/bearcli
+title="$1"
+
+if [[ -z "$title" ]]; then
+  jq -n '{items: [{title: "새 노트 제목을 입력하세요", valid: false}]}'
+elif "$bear" show --title "$title" >/dev/null 2>&1; then
+  jq -n --arg t "$title" '{items: [{title: $t, subtitle: "기존 노트 열기", arg: $t}]}'
+else
+  jq -n --arg t "$title" '{items: [{title: $t, subtitle: "새 노트 만들기", arg: $t}]}'
+fi
